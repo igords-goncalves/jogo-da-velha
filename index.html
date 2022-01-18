@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://kit.fontawesome.com/e900989936.js" crossorigin="anonymous"></script>
+
+    <title>Jogo da Velha</title>
+</head>
+
+<body>
+    <header>
+        <div id="titulo" class="container">
+            <h1>Jogo da Velha</h1>
+        </div>
+    </header>
+
+    <main>
+        <div id="container-botoes" class="container">
+            <input id="ai" type="button" value="1 player">
+            <input id="2-players" type="button" value="2 players">
+        </div>
+
+        <div id="container-board" class="hide" class="container">
+            <div class="box" id="block-1"></div>
+            <div class="box" id="block-2"></div>
+            <div class="box" id="block-3"></div>
+            <div class="box" id="block-4"></div>
+            <div class="box" id="block-5"></div>
+            <div class="box" id="block-6"></div>
+            <div class="box" id="block-7"></div>
+            <div class="box" id="block-8"></div>
+            <div class="box" id="block-9"></div>
+        </div>
+
+        <div id="container-placar" class="container">
+            <span class="container-scoreboard">
+                <span id="x-scoreboard"><i class="far fa-times-circle"></i></span>
+                <span id="1-socoreboard">0</span>
+            </span>
+            <span class="container-scoreboard">
+                <span id="o-scoreboard"><i class="far fa-circle"></i></span>
+                <span id="1-socoreboard">0</span>
+            </span>
+        </div>
+    </main>
+
+    <div class="hide">
+        <div class="x"><i class="far fa-times-circle"></i></i></div>
+        <div class="o"><i class="far fa-circle"></i></div>
+    </div>
+
+    <div id="message" class="hide">
+        <p></p>
+    </div>
+
+    <script src="js/index.js"></script>
+    
+</body>
+</html>
