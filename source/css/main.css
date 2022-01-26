@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap');
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#bg-quadro {
+    background-color: #14bdac;
+
+    width: 50%;
+    min-width: 320px;
+    min-height: 230px;
+    margin: 0 0 25px 0;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 20px 0;
+
+}
+
+#quadro {
+    background-color: #14bdac;
+
+    width: 20%;
+    min-width: 300px;
+
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0 20px 0;
+
+    flex-wrap: wrap;
+}
+
+.box {
+    height: 100px;
+    border: 3px solid var(--main-bg-color);
+
+    box-sizing: border-box;
+    flex: 1 1 33%;
+}
+
+#block-1, #block-2, #block-3 {
+    border-top: none;
+}
+#block-1, #block-4, #block-7 {
+    border-left: none;
+}
+#block-3, #block-6, #block-9 {
+    border-right: none;
+}
+#block-7, #block-8, #block-9 {
+    border-bottom: none;
+}
+
+
+#placar {
+    min-width: 50%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    
+    margin: 0 0 15px 0;
+
+    font-size: 1.2em;
+}
+
+a {
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+
+    color: #0e6191;
+    font-size: 1em;
+}
+
+/* Simbolos */
+
+
+.esconder {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.x {
+    display: inline-block;
+    font-size: 46px;
+}
+.o {
+    display: inline-block;
+    font-size: 36px;
+}
+
+.esconder {
+    display: none !important;
+}
+
+#menssagem p {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    width: 100%;
+    font-size: 4em;
+    color: var(--font-color);
+}

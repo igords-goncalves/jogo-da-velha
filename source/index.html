@@ -7,10 +7,12 @@
 
     <link rel="shortcut icon" href="#">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/main.css">
 
     <script src="https://kit.fontawesome.com/e900989936.js" crossorigin="anonymous"></script>
 
-    <title>Tic-tac-toe</title>
+    <title>Jogo da Velha</title>
 </head>
 
 <body>
@@ -18,48 +20,66 @@
         <div id="titulo" class="container">
             <h1>Jogo da Velha</h1>
         </div>
+        <div id="painel" class="container">
+            <div>
+                <select name="nivel" id="nivel">
+                    <option value="facil">Fácil</option>
+                    <option value="medio" selected>Médio</option>
+                    <option value="dificil">Difícil</option>
+                </select>
+            </div>
+            <div id="botoes">
+                <button id="vezes" class="botao"><i class="fas fa-times"></i></button>
+                <button id="circulo" class="botao"><i class="fas fa-circle-notch"></i></i></button>
+            </div>
+            <div id="instrucoes">
+                <p>Comece o jogo ou selecione o tipo</p>
+            </div>
+        </div>
     </header>
 
     <main>
-        <div id="container-botoes" class="container">
-            <input id="ai" type="button" value="1 player">
-            <input id="2-players" type="button" value="2 players">
-        </div>
+        <div id="bg-quadro">
+            <div id="quadro" class="container">
+                <div class="box" id="block-1"></div>
+                <div class="box" id="block-2"></div>
+                <div class="box" id="block-3"></div>
+                <div class="box" id="block-4"></div>
+                <div class="box" id="block-5"></div>
+                <div class="box" id="block-6"></div>
+                <div class="box" id="block-7"></div>
+                <div class="box" id="block-8"></div>
+                <div class="box" id="block-9"></div>
+            </div>
+    </div>
 
-        <div id="container-board" class="hide" class="container">
-            <div class="box" id="block-1"></div>
-            <div class="box" id="block-2"></div>
-            <div class="box" id="block-3"></div>
-            <div class="box" id="block-4"></div>
-            <div class="box" id="block-5"></div>
-            <div class="box" id="block-6"></div>
-            <div class="box" id="block-7"></div>
-            <div class="box" id="block-8"></div>
-            <div class="box" id="block-9"></div>
+        <div id="placar" class="container">
+            <span class="score">
+                <span id="x-score"><i class="fas fa-times"></i></span>
+                <span id="1-score">0</span>
+            </span>
+            <span class="score">
+                <span id="o-score"><i class="fas fa-circle-notch"></i></span>
+                <span id="1-score">0</span>
+            </span>
         </div>
-
-        <div id="container-placar" class="container">
-            <span class="container-scoreboard">
-                <span id="x-scoreboard"><i class="far fa-times-circle"></i></span>
-                <span id="1-socoreboard">0</span>
-            </span>
-            <span class="container-scoreboard">
-                <span id="o-scoreboard"><i class="far fa-circle"></i></span>
-                <span id="1-socoreboard">0</span>
-            </span>
+        
+        <div id="recomecar">
+            <a href="#">Recomece o Jogo</a>
         </div>
     </main>
 
-    <div class="hide">
-        <div class="x"><i class="far fa-times-circle"></i></i></div>
-        <div class="o"><i class="far fa-circle"></i></div>
+    <!-- Esconder -->
+
+    <div class="esconder"> 
+        <div class="x"><i class="fas fa-times"></i></div>
+        <div class="o"><i class="fas fa-circle-notch"></i></div>
     </div>
 
-    <div id="message" class="hide">
-        <p></p>
+    <div id="menssagem" class="esconder">
+        <p>Mensagem</p>
     </div>
 
     <script src="js/index.js"></script>
-    
 </body>
 </html>
