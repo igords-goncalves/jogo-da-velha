@@ -43,6 +43,9 @@ main {
 
     box-sizing: border-box;
     flex: 1 1 33%;
+
+    text-decoration: none;
+    list-style: none;
 }
 
 #block-1, #block-2, #block-3 {
