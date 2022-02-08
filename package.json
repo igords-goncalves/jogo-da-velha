@@ -4,13 +4,19 @@
   "description": "Esse é um jogo da velha para ser jogado diretamente no browser.",
   "main": "./source/js/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon"
   },
-  "keywords": ["velha", "game", "jogos", "bricandeira", "jogo"],
+  "keywords": [
+    "velha",
+    "game",
+    "jogos",
+    "bricandeira",
+    "jogo"
+  ],
   "author": "igorgoncalves",
   "license": "ISC",
   "dependencies": {
-    "nodemon": "2.0.15",
-    "save-dev": "0.0.1-security"
+    "nodemon": "^2.0.15"
   }
 }
