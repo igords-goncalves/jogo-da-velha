@@ -24,7 +24,6 @@
         const quadro = document.querySelector('#quadro')
 
 
-
         const pai = bgQuadro.parentNode // Pai tag main
         const filho = quadro.parentNode // Pai div id bgQuadro
         const neto = boxes.parentNode // undefined --> Era p/ ser div id quadro
@@ -40,3 +39,5 @@
         console.log(filho)
         console.log(neto === undefined)
         console.log(netoTeste)
+
+        console.log(box1.nodeName)
