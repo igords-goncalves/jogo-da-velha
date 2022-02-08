@@ -41,3 +41,58 @@
         console.log(netoTeste)
 
         console.log(box1.nodeName)
+
+        // for (let i = 0; i < celula.length; i++) {
+
+//     celula[i].addEventListener('click', () => {
+
+//         let elemento
+
+//         if (player1 === player2) {
+//             elemento = x
+//         } else {
+//             elemento = o
+//         }
+
+//         let cloneElemento = elemento.cloneNode(true)
+
+//         console.log('Testando ' + cloneElemento) //# teste
+
+//         console.log(celula.appendChild(cloneElemento))
+//     })
+// }
+
+//&* Teste
+
+// boxes.addEventListener('click', () => {
+
+//     console.log('Capturado ...') //# teste
+
+//     let elemento
+
+//     if (player1 === player2) {
+//         elemento = x
+//     } else {
+//         elemento = o
+//     }
+
+//     let cloneElemento = elemento.cloneNode(true)
+
+//     console.log('Testando ' + cloneElemento) //# teste
+
+//     console.log(boxes.appendChild(cloneElemento))
+// })
+
+
+/**
+ * Tudo funciona corretamente até esse trecho do código,
+ * a parte de captura funciona perfeitamente
+ * e o laço de repetição aliado aos eventos também.
+ * 
+ * O problema aparece quando vamos tratar os elementos
+ * da nodeList como nodes, adicionando nodeChild a eles,
+ * essa adição não acontece pois estão undefined como nodes
+ * 
+ *! O problema está na NodeList
+ *! O problema estava na forma de percorrer o nodeList?
+ */

@@ -46,6 +46,10 @@ main {
 
     text-decoration: none;
     list-style: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #block-1, #block-2, #block-3 {
@@ -85,24 +89,23 @@ a {
 
 /* Simbolos */
 
+.x {
+    display: inline-block;
+    font-size: 60px;
+    color: #7a0000;
+    opacity: 0.6;
+}
+.o {
+    display: inline-block;
+    font-size: 50px;
+    opacity: 0.8;
+}
 
 .esconder {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-}
-
-.x {
-    display: inline-block;
-    font-size: 46px;
-}
-.o {
-    display: inline-block;
-    font-size: 36px;
-}
-
-.esconder {
     display: none !important;
 }
 
