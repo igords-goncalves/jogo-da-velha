@@ -1,10 +1,10 @@
 const x = document.querySelector(".x")
 const o = document.querySelector(".o")
-const quadro = document.querySelector('#quadro') //! Capturei os filhos de quadro e coloquei numa nodeList
-const boxes = quadro.childNodes
+const boxes = document.querySelectorAll('.box') // Nodelist estática []
 const botoes = document.querySelectorAll("#botoes")
 const mensagem = document.querySelector("#mensagem")
 const textoMenssagem = document.querySelector("#mensagem p")
+
 
 // Contador de jogadas
 
@@ -46,3 +46,15 @@ function checarElemento(player1, player2) {
     }
     return elemento
 }
+
+function checarCondicaoDeVitoria() {
+    
+    // Horizontal
+
+    // Vertical
+
+    // Diagonal Esq
+
+    // Diagonal Dir
+}
+checarCondicaoDeVitoria(boxes)

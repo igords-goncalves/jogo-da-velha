@@ -1,15 +1,15 @@
 //&* Script de tests
 
 
-        const box1 = document.querySelector('#block-1')
-        const box2 = document.querySelector('#block-2')
-        const box3 = document.querySelector('#block-3')
-        const box4 = document.querySelector('#block-4')
-        const box5 = document.querySelector('#block-5')
-        const box6 = document.querySelector('#block-6')
-        const box7 = document.querySelector('#block-7')
-        const box8 = document.querySelector('#block-8')
-        const box9 = document.querySelector('#block-9')
+        const b1 = document.querySelector('#block-1')
+        const b2 = document.querySelector('#block-2')
+        const b3 = document.querySelector('#block-3')
+        const b4 = document.querySelector('#block-4')
+        const b5 = document.querySelector('#block-5')
+        const b6 = document.querySelector('#block-6')
+        const b7 = document.querySelector('#block-7')
+        const b8 = document.querySelector('#block-8')
+        const b9 = document.querySelector('#block-9')
 
         
         const boxes = [box1, box2, box3, box4, box5, box6, box7, box8, box9]
