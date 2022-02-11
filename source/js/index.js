@@ -61,21 +61,15 @@ function checarCondicaoDeVitoria() {
     console.log(b3.childNodes)
 
     // Horizontal linha 1 2 3
-
-    if (b1.childNodes.length > 0 && b2.childNodes.length > 0 && b3.childNodes.length > 0) {
-
-        if (b1.childNodes[0].className === "x" 
-        && b2.childNodes[0].className=== "x" 
-        && b3.childNodes[0].className === "x") {
-            
-            console.log('x venceu')
-
+    setInterval(() => {
+        if (b1.childNodes.length > 0 && b2.childNodes.length > 0 && b3.childNodes.length > 0) {
+    
+            if (b1.childNodes[0].className === "x" 
+            && b2.childNodes[0].className=== "x" 
+            && b3.childNodes[0].className === "x") {
+                console.log('x venceu')
+            }
         }
-    }
-    // Vertical linha 1 2 3
-
-    // Diagonal Esq
-
-    // Diagonal Dir
+    }, 100)
 }
 checarCondicaoDeVitoria()
