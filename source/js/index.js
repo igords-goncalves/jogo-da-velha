@@ -11,6 +11,8 @@ const textoMenssagem = document.querySelector("#mensagem p")
 let player1 = 0
 let player2 = 0
 
+//%* Evento click
+
 function clicarEjogar(elements) {
 
     elements.forEach(element => {
@@ -22,7 +24,7 @@ function clicarEjogar(elements) {
 }
 clicarEjogar(boxes)
 
- // Verifica se um child foi adicionado e computa jogada
+//%* Verifica se um child foi adicionado e computa jogada
 
 function jogada(node, player) {
     if (node.childNodes.length === 0) {
@@ -34,7 +36,7 @@ function jogada(node, player) {
     }
 }
 
-// Evento que acontece ao clicar no quadro
+//%* Evento que acontece ao clicar no quadro
 
 function checarElemento(player1, player2) {
     let elemento
@@ -46,6 +48,8 @@ function checarElemento(player1, player2) {
     }
     return elemento
 }
+
+//%* Logica da condicão de vitória
 
 function checarCondicaoDeVitoria() {
     

@@ -120,3 +120,8 @@ a {
     font-size: 4em;
     color: var(--font-color);
 }
+
+#recomecar {
+    font-size: 11pt;
+    font-weight: 700;
+}
