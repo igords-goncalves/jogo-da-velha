@@ -5,7 +5,6 @@ const botoes = document.querySelectorAll("#botoes")
 const mensagem = document.querySelector("#mensagem")
 const textoMenssagem = document.querySelector("#mensagem p")
 
-
 // Contador de jogadas
 
 let player1 = 0
@@ -52,13 +51,31 @@ function checarElemento(player1, player2) {
 //%* Logica da condicão de vitória
 
 function checarCondicaoDeVitoria() {
-    
-    // Horizontal
 
-    // Vertical
+    let b1 = document.querySelector('#block-1')
+    let b2 = document.querySelector('#block-2')
+    let b3 = document.querySelector('#block-3')
+
+    console.log(b1.childNodes)
+    console.log(b2.childNodes)
+    console.log(b3.childNodes)
+
+    // Horizontal linha 1 2 3
+
+    if (b1.childNodes.length > 0 && b2.childNodes.length > 0 && b3.childNodes.length > 0) {
+
+        if (b1.childNodes[0].className === "x" 
+        && b2.childNodes[0].className=== "x" 
+        && b3.childNodes[0].className === "x") {
+            
+            console.log('x venceu')
+
+        }
+    }
+    // Vertical linha 1 2 3
 
     // Diagonal Esq
 
     // Diagonal Dir
 }
-checarCondicaoDeVitoria(boxes)
+checarCondicaoDeVitoria()
