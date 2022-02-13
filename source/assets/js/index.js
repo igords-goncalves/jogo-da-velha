@@ -61,6 +61,7 @@ function checarCondicaoDeVitoria() {
     console.log(b3.childNodes)
 
     // Horizontal linha 1 2 3
+
     setInterval(() => {
         if (b1.childNodes.length > 0 && b2.childNodes.length > 0 && b3.childNodes.length > 0) {
     
