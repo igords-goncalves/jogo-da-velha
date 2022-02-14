@@ -19,7 +19,9 @@ function clicarEjogar(elements) {
             let elemento = checarElemento(player1, player2)
             jogada(element, elemento)
         })
+        
     })
+    
 }
 clicarEjogar(boxes)
 
@@ -60,17 +62,18 @@ function checarCondicaoDeVitoria() {
     console.log(b2.childNodes)
     console.log(b3.childNodes)
 
+    function verificarNodes(node, type) {
+        node.childNodes[0].className === type
+    }
+
     // Horizontal linha 1 2 3
 
     setInterval(() => {
         if (b1.childNodes.length > 0 && b2.childNodes.length > 0 && b3.childNodes.length > 0) {
-    
-            if (b1.childNodes[0].className === "x" 
-            && b2.childNodes[0].className=== "x" 
-            && b3.childNodes[0].className === "x") {
+            if (verificarNodes(b1, 'x') && verificarNodes(b2, 'x') && verificarNodes(b3, 'x')) {
                 console.log('x venceu')
             }
         }
-    }, 100)
+    }, 300)
 }
 checarCondicaoDeVitoria()
