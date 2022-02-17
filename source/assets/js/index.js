@@ -59,20 +59,32 @@ function checarCondicaoDeVitoria() {
     let b2 = document.querySelector('#block-2')
     let b3 = document.querySelector('#block-3')
 
-    console.log(b1.childNodes)
-    console.log(b2.childNodes)
-    console.log(b3.childNodes)
-
     // Horizontal linha 1 2 3
 
-    // setInterval(() => {
-        if (b1.childNodes.length > 0 && b2.childNodes.length > 0 && b3.childNodes.length > 0) {
-            if (
-                b1.childNodes[0].className === 'x' 
-                && b2.childNodes[0].className === 'x'
-                && b3.childNodes[0].className === 'x') {
-                console.log('x venceu')
+        // if (b1.childNodes.length > 0 && b2.childNodes.length > 0 && b3.childNodes.length > 0) {
+        //     if (
+        //         b1.childNodes[0].className === 'x' 
+        //         && b2.childNodes[0].className === 'x'
+        //         && b3.childNodes[0].className === 'x') {
+        //         console.log('x venceu')
+        //     }
+        // }
+
+        function condicaoDeVitoria(node1, node2, node3, type) {
+            if(
+                node1.childNodes.length > 0 
+                && node2.childNodes.length > 0 
+                && node3.childNodes.length > 0
+            ) {
+                if (
+                    node1.childNodes[0].className === type &&
+                    node2.childNodes[0].className === type &&
+                    node3.childNodes[0].className === type
+                    ) {
+                    console.log(`${type} venceu`)
+                }
             }
         }
-    // }, 0)
+    condicaoDeVitoria(b1, b2, b3, 'x')
+    condicaoDeVitoria(b1, b2, b3, 'o')
 }
