@@ -35,6 +35,7 @@ function jogada(node, player) {
 
         player1 === player2 ? player1++ : player2++ // Criando a diferenciação das jogadas
     }
+    checarCondicaoDeVitoria()
 }
 
 //%* Evento que acontece ao clicar no quadro
@@ -62,18 +63,16 @@ function checarCondicaoDeVitoria() {
     console.log(b2.childNodes)
     console.log(b3.childNodes)
 
-    function verificarNodes(node, type) {
-        node.childNodes[0].className === type
-    }
-
     // Horizontal linha 1 2 3
 
-    setInterval(() => {
+    // setInterval(() => {
         if (b1.childNodes.length > 0 && b2.childNodes.length > 0 && b3.childNodes.length > 0) {
-            if (verificarNodes(b1, 'x') && verificarNodes(b2, 'x') && verificarNodes(b3, 'x')) {
+            if (
+                b1.childNodes[0].className === 'x' 
+                && b2.childNodes[0].className === 'x'
+                && b3.childNodes[0].className === 'x') {
                 console.log('x venceu')
             }
         }
-    }, 300)
+    // }, 0)
 }
-checarCondicaoDeVitoria()
