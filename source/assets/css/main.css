@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
+
 main {
     width: 100%;
     display: flex;
@@ -109,7 +111,7 @@ a {
     display: none !important;
 }
 
-#menssagem p {
+#mensagem {
     position: absolute;
     display: flex;
     flex-direction: row;
@@ -118,10 +120,12 @@ a {
     top: 50%;
     width: 100%;
     font-size: 4em;
-    color: var(--font-color);
+    color: var(--main-bg-color);
+    font-family: 'Oswald', sans-serif;
 }
 
 #recomecar {
     font-size: 11pt;
     font-weight: 700;
 }
+
