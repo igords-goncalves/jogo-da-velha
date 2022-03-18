@@ -173,6 +173,7 @@ function declararVencedor(vencedor) {
 
         const limpar = () => {
             const removerJogadas = document.querySelectorAll(".box div")
+
             for (let i = 0; i < removerJogadas.length; i++) {
                 removerJogadas[i].parentNode.removeChild(removerJogadas[i])
             }
@@ -183,7 +184,7 @@ function declararVencedor(vencedor) {
             esconderBg(bgQuadro, 'filter')
             esconderBg(quadro, 'filter')
             limpar()
-        }, 2000)
+        }, 1500)
 
     }
 }
