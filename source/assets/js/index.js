@@ -1,55 +1,80 @@
-const x = document.querySelector(".x")
-const o = document.querySelector(".o")
-const boxes = document.querySelectorAll('.box') // Nodelist estática []
-const botoes = document.querySelectorAll("#botoes")
-const mensagem = document.querySelector("#mensagem")
-let textoMensagem = document.querySelector("#mensagem p")
+// Variáveis úteis para o programa
+
+const x = document.querySelector(".x") // Simbolo
+const o = document.querySelector(".o") // Simbolo
+
+const containerDeCaixas = document.querySelectorAll('.box') // Nodelist estática []
+const botoes = document.querySelectorAll("#botoes") // Nodelist estática []
+
+const mensagem = document.querySelector("#mensagem") //Div que tem o texto
+let textoDaMensagem = document.querySelector("#mensagem p") // O texto propriamente dito
+
+let bolinha
 
 // Contador de jogadas
 
 let player1 = 0
-let player2 = 0
+let ia = 0
 
-// Evento click
+// Regra de negócio ==================================================================================
 
-function clicarEjogar(elements) {
+function clicarEinserirSimboloTratado(containerDeCaixas) {
 
-    elements.forEach(element => {
-        element.addEventListener('click', () => {
-            let elemento = checarElemento(player1, player2)
-            jogada(element, elemento)
+    containerDeCaixas.forEach(caixa => { // Dentro do containerDeCaixas para cada caixa adicione...
+
+        caixa.addEventListener('click', () => { // ... e quando for clicado faça duas coisas:
+
+            console.log(caixa.id) //# mostre quem é a caixa clicada e ...
+
+            verificaJogadas(caixa, checarValorEdefinirSimbolo()) // Higher order function
         })
-        
     })
-    
 }
-clicarEjogar(boxes)
+clicarEinserirSimboloTratado(containerDeCaixas) 
+// O tratamento acontece em verificaJogadas, checarValorEdefinirSimbolo
 
-// Verifica se um child foi adicionado e computa jogada
+function verificaJogadas(caixa, simbolo) {
 
-function jogada(node, player) {
-    if (node.childNodes.length === 0) {
+    if (caixa.childNodes.length === 0) { // Se a caixa estiver vazia sem childNodes filhos faça ...
 
-        let elementoClone = player.cloneNode(true)
-        node.appendChild(elementoClone)
+        caixa.appendChild(simbolo.cloneNode(true)) 
+        // Inserindo o clone filho do símbolo dentro da caixa quebrando a condicional
 
-        player1 === player2 ? player1++ : player2++ // Criando a diferenciação das jogadas
-    }
-    checarCondicaoDeVitoria()
-}
+        player1 === ia ? player1++ : ia++ // Da todo suporte para condicinal de checarValorEdefinirSimbolo()
 
-// Evento que acontece ao clicar no quadro
-
-function checarElemento(player1, player2) {
-    let elemento
-
-    if (player1 === player2) {
-        elemento = x
+        console.log(player1) //# vale 1
     } else {
-        elemento = o
+        
+        alert('Saiu da regra, escolha uma casa que vale 0, essa já está cheia!')
     }
-    return elemento
+
+    // checarCondicaoDeVitoria()
 }
+
+function checarValorEdefinirSimbolo() {
+
+    let simboloDaVariavel = ''
+    // Vai receber uma variável que contém um simbolo com base na comparação de player1 e ia
+
+    player1 === ia ? simboloDaVariavel = x : simboloDaVariavel = o
+    // Quando os valores forem iguais inserir "x", quando forem diferentes inserir "o"
+
+    console.log(ia) //# vale 0
+
+    return simboloDaVariavel
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Mapeamento da condicão de vitória
 
@@ -85,8 +110,8 @@ function checarCondicaoDeVitoria() {
 
 
     let empate = 0;
-    for (let index = 0; index < boxes.length; index++) {
-        if (boxes[index].childNodes[0] != undefined) {
+    for (let index = 0; index < containerDeCaixas.length; index++) {
+        if (containerDeCaixas[index].childNodes[0] != undefined) {
             empate ++
         }        
     }
@@ -148,7 +173,7 @@ function declararVencedor(vencedor) {
 
     // Exibindo mensagem
 
-    textoMensagem.innerHTML = msg
+    textoDaMensagem.innerHTML = msg
     mensagem.classList.remove('esconder')
 
     function trocarBgLimparZerar() {
@@ -185,6 +210,5 @@ function declararVencedor(vencedor) {
             esconderBg(quadro, 'filter')
             limpar()
         }, 1500)
-
     }
 }

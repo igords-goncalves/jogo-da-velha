@@ -14,3 +14,7 @@ Regras
 - De acordo com o nível escolhido um cronometro será acionado delimitando tempo de cada jogador realizar sua jogada.
 
 - Até que o jogo seja reiniciado o placar será acumulativo.
+
+IA
+
+- Para criar IA foi necessário entender que, se o player 1 escolhe bolinha IA é x e começa jogando, se o player 1 é x IA é bolinha e player 1 começa jogando
