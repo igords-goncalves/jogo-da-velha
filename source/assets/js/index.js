@@ -3,8 +3,8 @@
 const x = document.querySelector(".x") // Simbolo
 const o = document.querySelector(".o") // Simbolo
 
-const containerDeCaixas = document.querySelectorAll('.box') // Nodelist estática []
-const botoes = document.querySelectorAll("#botoes") // Nodelist estática []
+const containerDeCaixas = document.querySelectorAll('.box') // retorna Nodelist estática[]
+const botoes = document.querySelectorAll("#botoes") // retorna Nodelist estática[]
 
 const mensagem = document.querySelector("#mensagem") //Div que tem o texto
 let textoDaMensagem = document.querySelector("#mensagem p") // O texto propriamente dito
@@ -22,7 +22,7 @@ function clicarEinserirSimboloTratado(containerDeCaixas) {
 
     containerDeCaixas.forEach(caixa => { // Dentro do containerDeCaixas para cada caixa adicione...
 
-        caixa.addEventListener('click', () => { // ... e quando for clicado faça duas coisas:
+        caixa.addEventListener('click', () => { // ... e quando o evento acontecer faça duas coisas:
 
             console.log(caixa.id) //# mostre quem é a caixa clicada e ...
 
@@ -33,12 +33,13 @@ function clicarEinserirSimboloTratado(containerDeCaixas) {
 clicarEinserirSimboloTratado(containerDeCaixas) 
 // O tratamento acontece em verificaJogadas, checarValorEdefinirSimbolo
 
-function verificaJogadas(caixa, simbolo) {
+function verificaJogadas(caixa, simbolo) { // caixa é um elemento dentro de containerDeCaixas
 
     if (caixa.childNodes.length === 0) { // Se a caixa estiver vazia sem childNodes filhos faça ...
 
         caixa.appendChild(simbolo.cloneNode(true)) 
         // Inserindo o clone filho do símbolo dentro da caixa quebrando a condicional
+        // Simbolo é o valor checado e definido na função checarValorEdefinirSimbolo
 
         player1 === ia ? player1++ : ia++ // Da todo suporte para condicinal de checarValorEdefinirSimbolo()
 
