@@ -11,9 +11,7 @@ main {
 }
 
 #bg-quadro {
-    /* background-color: #14bdac; */
-
-    border: solid 3px #14bdac;
+    background-color: #14bdac;
 
     width: 50%;
     min-width: 320px;
@@ -29,8 +27,6 @@ main {
 }
 
 #quadro {
-    background-color: #14bdac;
-
     width: 20%;
     min-width: 300px;
 
@@ -130,4 +126,3 @@ a {
     font-size: 11pt;
     font-weight: 700;
 }
-

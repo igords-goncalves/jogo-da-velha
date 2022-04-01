@@ -95,3 +95,45 @@ header {
     justify-content: center;
     font-size: 0.7em;
 }
+
+@media (max-width: 800px) {
+    #botoes {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+    .botao {
+        text-align: center;
+        padding: 10px 10px;
+        width: 150px;
+    
+        font-size: 1.5em;
+    
+        background: none;
+        border: 0.01px solid #6e6e6e;
+        border-radius: 8px;
+    
+        margin: 0 0 5px 0;
+    
+        cursor: pointer;
+    }
+}
+
+@media(max-width: 800px) {
+    #painel {
+        min-width: 50%;
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+        margin: 0 0 20px 0;
+    }
+    #titulo {
+        font-size: 1.1em;
+        margin: 0 0 10px 0;
+        font-family: 'Oswald', sans-serif;
+    }
+}

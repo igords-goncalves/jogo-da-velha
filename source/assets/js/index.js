@@ -3,17 +3,20 @@
 const x = document.querySelector(".x") // Simbolo
 const o = document.querySelector(".o") // Simbolo
 
-const containerDeCaixas = document.querySelectorAll('.box') // retorna Nodelist estática[]
-const botoes = document.querySelectorAll("#botoes") // retorna Nodelist estática[]
+const containerDeCaixas = document.querySelectorAll('.box') // Retorna Nodelist estática[]
+const botoes = document.querySelectorAll("#botoes") // Retorna Nodelist estática[]
 
-const mensagem = document.querySelector("#mensagem") //Div que tem o texto
+const mensagem = document.querySelector("#mensagem") //Div que envolve o texto
 let textoDaMensagem = document.querySelector("#mensagem p") // O texto propriamente dito
 
 let bolinha
 
-// Contador de jogadas
+// Contador de jogadas --> Entender a lógica de existência dos jogadores
+// A cada jogada feita, player e ia assumirão um valor de acordo com o evento
+// Quando os valores forem iguais inserir "x", quando forem diferentes inserir "o"
 
-let player1 = 0
+
+let player = 0
 let ia = 0
 
 // Regra de negócio ==================================================================================
@@ -24,92 +27,114 @@ function clicarEinserirSimboloTratado(containerDeCaixas) {
 
         caixa.addEventListener('click', () => { // ... e quando o evento acontecer faça duas coisas:
 
-            console.log(caixa.id) //# mostre quem é a caixa clicada e ...
+            console.log(caixa.id) //# mostre o id de quem é a caixa clicada e chame a função abaixo
 
             verificaJogadas(caixa, checarValorEdefinirSimbolo()) // Higher order function
+
+            console.log('Jogada player nº ' + player) //# Jogada
+            console.log('Jogada ai nº '+ ia) //# Jogada
         })
     })
+    
 }
 clicarEinserirSimboloTratado(containerDeCaixas) 
 // O tratamento acontece em verificaJogadas, checarValorEdefinirSimbolo
 
-function verificaJogadas(caixa, simbolo) { // caixa é um elemento dentro de containerDeCaixas
+function verificaJogadas(caixa, simbolo) { // Caixa é um elemento dentro de containerDeCaixas
 
-    if (caixa.childNodes.length === 0) { // Se a caixa estiver vazia sem childNodes filhos faça ...
+    if (caixa.childNodes.length === 0 && caixa.childNodes.length < 1) { // Se a caixa estiver vazia sem childNodes(filhos) faça ...
 
-        caixa.appendChild(simbolo.cloneNode(true)) 
-        // Inserindo o clone filho do símbolo dentro da caixa quebrando a condicional
-        // Simbolo é o valor checado e definido na função checarValorEdefinirSimbolo
+        caixa.appendChild(simbolo.cloneNode(true))
+        //* Clonar o elemento nesse caso é ralizar cópias do mesmo elemento
+        //* Pois se o elemento não for clonado ele somenete irá de um lugar para o outro
+        //* Inserindo o clone filho do símbolo dentro da caixa quebrando a condicional
+        //* Se o nó não for mais igual a zero ele vira falso e cai no else
+        //* Simbolo é o valor checado e definido na função checarValorEdefinirSimbolo()
 
-        player1 === ia ? player1++ : ia++ // Da todo suporte para condicinal de checarValorEdefinirSimbolo()
+        player === ia ? player++ : ia++ // Da todo suporte para condicinal de checarValorEdefinirSimbolo()
 
-        console.log(player1) //# vale 1
-    } else {
-        
-        alert('Saiu da regra, escolha uma casa que vale 0, essa já está cheia!')
+        console.log(player, ia) //# teste Mostra o valor atual entre os players antes de rceber o simbolo
     }
 
-    // checarCondicaoDeVitoria()
+    checarCondicaoDeVitoria()
+    checarCondicaoDeEmpate()
 }
 
 function checarValorEdefinirSimbolo() {
 
     let simboloDaVariavel = ''
-    // Vai receber uma variável que contém um simbolo com base na comparação de player1 e ia
+    // Vai receber uma variável que contém um simbolo com base na comparação de player e ia
 
-    player1 === ia ? simboloDaVariavel = x : simboloDaVariavel = o
+    player === ia ? simboloDaVariavel = x : simboloDaVariavel = o
     // Quando os valores forem iguais inserir "x", quando forem diferentes inserir "o"
-
-    console.log(ia) //# vale 0
 
     return simboloDaVariavel
 }
 
+function checarCondicaoDeVitoria() { // Só é possível checar a vitória depois de verificar as jogadas
 
+    const b1 = document.querySelector('#block-1')
+    const b2 = document.querySelector('#block-2')
+    const b3 = document.querySelector('#block-3')
+    const b4 = document.querySelector('#block-4')
+    const b5 = document.querySelector('#block-5')
+    const b6 = document.querySelector('#block-6')
+    const b7 = document.querySelector('#block-7')
+    const b8 = document.querySelector('#block-8')
+    const b9 = document.querySelector('#block-9')
 
+    // Função pensada evitando repetições quanto a lógica de vitória
 
-
-
-
-
-
-
-
-
-
-// Mapeamento da condicão de vitória
-
-function checarCondicaoDeVitoria() {
-
-    let b1 = document.querySelector('#block-1')
-    let b2 = document.querySelector('#block-2')
-    let b3 = document.querySelector('#block-3')
-    let b4 = document.querySelector('#block-4')
-    let b5 = document.querySelector('#block-5')
-    let b6 = document.querySelector('#block-6')
-    let b7 = document.querySelector('#block-7')
-    let b8 = document.querySelector('#block-8')
-    let b9 = document.querySelector('#block-9')
-
-        // Função pensada evitando repetições quanto a lógica de vitória
-
-        function condicaoDeVitoria(node1, node2, node3, type) {
-            if(
-                node1.childNodes.length > 0 
-                && node2.childNodes.length > 0 
-                && node3.childNodes.length > 0
-            ) {
-                if (
-                    node1.childNodes[0].className === type &&
-                    node2.childNodes[0].className === type &&
-                    node3.childNodes[0].className === type
-                    ) {
-                    declararVencedor(type)
-                }
+    function automacaoCondicaoDeVitoria(caixaOcupada1, caixaOcupada2, caixaOcupada3, simbolo) {
+        if( // Se a caixas selecionadas não estiverem vazias ...
+            caixaOcupada1.childNodes.length > 0 && 
+            caixaOcupada2.childNodes.length > 0 && 
+            caixaOcupada3.childNodes.length > 0
+         ) {
+            if ( // ... e se a caixa ocupada tem um filho chamado "x" ou "o" então chame a função ...
+                caixaOcupada1.childNodes[0].className === simbolo &&
+                caixaOcupada2.childNodes[0].className === simbolo &&
+                caixaOcupada3.childNodes[0].className === simbolo
+                ) {
+                    declararVencedor(simbolo)
+                    
+            //# Na func verificaJogadas deixamos claro que as caixas só podem receber 1 filho, que será o [0]
             }
         }
+    }
 
+    // Possibilidades da Horizontal
 
+    automacaoCondicaoDeVitoria(b1, b2, b3, 'x')
+    automacaoCondicaoDeVitoria(b1, b2, b3, 'o')
+
+    automacaoCondicaoDeVitoria(b4, b5, b6, 'x')
+    automacaoCondicaoDeVitoria(b4, b5, b6, 'o')
+
+    automacaoCondicaoDeVitoria(b7, b8, b9, 'x')
+    automacaoCondicaoDeVitoria(b7, b8, b9, 'o')
+
+    // Possibilidades da Vertical
+
+    automacaoCondicaoDeVitoria(b1, b4, b7, 'x')
+    automacaoCondicaoDeVitoria(b1, b4, b7, 'o')
+
+    automacaoCondicaoDeVitoria(b2, b5, b8, 'x')
+    automacaoCondicaoDeVitoria(b2, b5, b8, 'o')
+
+    automacaoCondicaoDeVitoria(b3, b6, b9, 'x')
+    automacaoCondicaoDeVitoria(b3, b6, b9, 'o')
+
+    // Possibilidades da Diagonal
+
+    automacaoCondicaoDeVitoria(b1, b5, b9, 'x')
+    automacaoCondicaoDeVitoria(b1, b5, b9, 'o')
+
+    automacaoCondicaoDeVitoria(b3, b5, b7, 'x')
+    automacaoCondicaoDeVitoria(b3, b5, b7, 'o')
+}
+
+function checarCondicaoDeEmpate() {
     let empate = 0;
     for (let index = 0; index < containerDeCaixas.length; index++) {
         if (containerDeCaixas[index].childNodes[0] != undefined) {
@@ -119,37 +144,15 @@ function checarCondicaoDeVitoria() {
     if(empate === 9) {
         declararVencedor()
     }
-
-    // Horizontal
-
-    condicaoDeVitoria(b1, b2, b3, 'x')
-    condicaoDeVitoria(b1, b2, b3, 'o')
-
-    condicaoDeVitoria(b4, b5, b6, 'x')
-    condicaoDeVitoria(b4, b5, b6, 'o')
-
-    condicaoDeVitoria(b7, b8, b9, 'x')
-    condicaoDeVitoria(b7, b8, b9, 'o')
-
-    // Vertical
-
-    condicaoDeVitoria(b1, b4, b7, 'x')
-    condicaoDeVitoria(b1, b4, b7, 'o')
-
-    condicaoDeVitoria(b2, b5, b8, 'x')
-    condicaoDeVitoria(b2, b5, b8, 'o')
-
-    condicaoDeVitoria(b3, b6, b9, 'x')
-    condicaoDeVitoria(b3, b6, b9, 'o')
-
-    // Diagonal
-
-    condicaoDeVitoria(b1, b5, b9, 'x')
-    condicaoDeVitoria(b1, b5, b9, 'o')
-
-    condicaoDeVitoria(b3, b5, b7, 'x')
-    condicaoDeVitoria(b3, b5, b7, 'o')
 }
+
+
+
+
+
+
+
+// As funcionalidades, a parte de nível e escolha do simbolo será feita nessa parte
 
 // Limpa o jogo, declara o vencedor e atualiza o placar
 
