@@ -9,12 +9,19 @@ const botoes = document.querySelectorAll("#botoes") // Retorna Nodelist estátic
 const mensagem = document.querySelector("#mensagem") //Div que envolve o texto
 let textoDaMensagem = document.querySelector("#mensagem p") // O texto propriamente dito
 
-let bolinha
+ // Recomeca a partida
+
+function recomecarPartidaDoZero() {
+    document.querySelector("#recomecar").addEventListener("click", function() {
+        location.reload()
+    })
+}
+recomecarPartidaDoZero()
+
 
 // Contador de jogadas --> Entender a lógica de existência dos jogadores
 // A cada jogada feita, player e ia assumirão um valor de acordo com o evento
 // Quando os valores forem iguais inserir "x", quando forem diferentes inserir "o"
-
 
 let player = 0
 let ia = 0
@@ -24,13 +31,11 @@ let ia = 0
 function clicarEinserirSimboloTratado(containerDeCaixas) {
 
     containerDeCaixas.forEach(caixa => { // Dentro do containerDeCaixas para cada caixa adicione...
-
-        caixa.addEventListener('click', () => { // ... e quando o evento acontecer faça duas coisas:
-
-            console.log(caixa.id) //# mostre o id de quem é a caixa clicada e chame a função abaixo
+        caixa.addEventListener('click', () => { // ... e quando o evento acontecer faça coisas:
 
             verificaJogadas(caixa, checarValorEdefinirSimbolo()) // Higher order function
 
+            console.log(caixa.id) //# mostre o id de quem é a caixa clicada e chame a função abaixo
             console.log('Jogada player nº ' + player) //# Jogada
             console.log('Jogada ai nº '+ ia) //# Jogada
         })
@@ -42,7 +47,10 @@ clicarEinserirSimboloTratado(containerDeCaixas)
 
 function verificaJogadas(caixa, simbolo) { // Caixa é um elemento dentro de containerDeCaixas
 
-    if (caixa.childNodes.length === 0 && caixa.childNodes.length < 1) { // Se a caixa estiver vazia sem childNodes(filhos) faça ...
+    if (caixa.childNodes.length === 0 && caixa.childNodes.length < 1) { 
+        // Se a caixa estiver vazia sem childNodes(filhos) faça ...
+
+        inteligenciaArtificial()    
 
         caixa.appendChild(simbolo.cloneNode(true))
         //* Clonar o elemento nesse caso é ralizar cópias do mesmo elemento
@@ -57,7 +65,6 @@ function verificaJogadas(caixa, simbolo) { // Caixa é um elemento dentro de con
     }
 
     checarCondicaoDeVitoria()
-    checarCondicaoDeEmpate()
 }
 
 function checarValorEdefinirSimbolo() {
@@ -96,7 +103,7 @@ function checarCondicaoDeVitoria() { // Só é possível checar a vitória depoi
                 caixaOcupada2.childNodes[0].className === simbolo &&
                 caixaOcupada3.childNodes[0].className === simbolo
                 ) {
-                    declararVencedor(simbolo)
+                    declararVencedorAtualizaPlacar(simbolo)
                     
             //# Na func verificaJogadas deixamos claro que as caixas só podem receber 1 filho, que será o [0]
             }
@@ -134,71 +141,69 @@ function checarCondicaoDeVitoria() { // Só é possível checar a vitória depoi
     automacaoCondicaoDeVitoria(b3, b5, b7, 'o')
 }
 
+
 function checarCondicaoDeEmpate() {
-    let empate = 0;
+    let empate = 0
     for (let index = 0; index < containerDeCaixas.length; index++) {
-        if (containerDeCaixas[index].childNodes[0] != undefined) {
-            empate ++
-        }        
+        if (containerDeCaixas[index].childNodes[0] !== undefined) { // Se a caixa não estiver vazia
+            empate ++ 
+        }
     }
     if(empate === 9) {
-        declararVencedor()
+        declararVencedorAtualizaPlacar()
     }
 }
 
-
-
-
-
-
-
 // As funcionalidades, a parte de nível e escolha do simbolo será feita nessa parte
 
-// Limpa o jogo, declara o vencedor e atualiza o placar
 
-function declararVencedor(vencedor) {
-    let placarX = document.querySelector('span #score-1')
-    let placarO = document.querySelector('span #score-2')
+function declararVencedorAtualizaPlacar(simbolo) {
+    
+    let placarX = document.querySelector('span #placar-1')
+    
+    let placarO = document.querySelector('span #placar-2')
 
-    let msg = '';
+    let msg = ''
 
-    if (vencedor === 'x') {
-        placarX.textContent = parseInt(placarX.textContent) + 1 // Transfere o valor de string para int
+    if (simbolo === 'x') {
+
+        placarX.textContent = parseInt(placarX.textContent) + 1 // Valor de string para int
+        
         msg = "X VENCEU"
+
         trocarBgLimparZerar()
-    } else if(vencedor === 'o') {
+
+    } else if(simbolo === 'o') {
+       
         placarO.textContent = parseInt(placarO.textContent) + 1
+        
         msg = "O VENCEU"
+        
         trocarBgLimparZerar()
     } else {
+        
         msg = 'EMPATE'
+        
         trocarBgLimparZerar()
     }
 
     // Exibindo mensagem
 
     textoDaMensagem.innerHTML = msg
+
     mensagem.classList.remove('esconder')
 
     function trocarBgLimparZerar() {
+        player = 0 // Dessa maneira X sempre começa jogando primeiro
+        ia = 0
 
-        // 2 variáveis porque usei 2 boards se para formar o retângulo do tamanho que queria
-
-        const bgQuadro = document.querySelector("#bg-quadro")
-        const quadro = document.querySelector("#quadro")
-
+        let bgQuadro = document.querySelector("#bg-quadro")
         bgQuadro.style.filter = 'blur(8px)'
-        quadro.style.filer = 'blur(5px)'
         bgQuadro.style.transition = '0.3s'
-        quadro.style.transition = '0.2s'
 
-        function esconderBg(variavel, elemento) {
-            bgQuadro.style.removeProperty(elemento)
-        }
-
-        // Escondendo a mensagem após a vitória
-    
-        const esconder = (elemento) => elemento.classList.add("esconder")
+        const esconderBg = (variavel, elemento) => bgQuadro.style.removeProperty(elemento)
+        
+        const esconderMsg = elemento => elemento.classList.add("esconder")
 
         const limpar = () => {
             const removerJogadas = document.querySelectorAll(".box div")
@@ -209,10 +214,15 @@ function declararVencedor(vencedor) {
         }
     
         setTimeout(() => {
-            esconder(mensagem)
+            esconderMsg(mensagem)
             esconderBg(bgQuadro, 'filter')
-            esconderBg(quadro, 'filter')
             limpar()
         }, 1500)
     }
+}
+
+// Criando a IA usando recursividade
+
+function inteligenciaArtificial() {
+    // ...
 }

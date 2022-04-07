@@ -33,7 +33,7 @@
                 <button id="bolinha" class="botao"><i class="fas fa-circle"></i></button>
             </div>
             <div id="instrucoes">
-                <p>Comece o jogo ou selecione o tipo</p>
+                <p>Lembre-se sempre que <span id="obs">X</span> começa primeiro</p>
             </div>
         </div>
     </header>
@@ -54,18 +54,18 @@
         </div>
 
         <div id="placar" class="container">
-            <span class="score">
-                <span id="x-score"><i class="fas fa-times"></i></span>
-                <span id="score-1">0</span>
+            <span class="placar">
+                <span id="x-placar"><i class="fas fa-times"></i></span>
+                <span id="placar-1">0</span>
             </span>
-            <span class="score">
-                <span id="o-score"><i class="fas fa-circle"></i></span>
-                <span id="score-2">0</span>
+            <span class="placar">
+                <span id="o-placar"><i class="fas fa-circle"></i></span>
+                <span id="placar-2">0</span>
             </span>
         </div>
         
         <div id="recomecar">
-            <a href="#" style="color: #14bdac;">Recomece o Jogo</a>
+            <a href="#">Recomece o Jogo</a>
         </div>
     </main>
 
@@ -77,7 +77,7 @@
     </div>
 
     <div id="mensagem" class="esconder">
-        <p>Mensagem</p>
+        <p></p>
     </div>
 
     <script src="./assets/js/index.js"></script>

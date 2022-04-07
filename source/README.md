@@ -2,19 +2,20 @@
 
 - Projeto baseado no modelo jogo da velha do Google
 
-> Jogo projetado somente para uma pessoa contra IA.
+> Jogo projetado somente para uma pessoa jogar contra IA.
 
+___
 
 Regras
 
 - O x sempre começa primeiro
   
-- O jogador real tem a opção de escolher com simbolo jogará.
+- O jogador real tem a opção de escolher com qual simbolo jogará.
 
-- De acordo com o nível escolhido um cronometro será acionado delimitando tempo de cada jogador realizar sua jogada.
+- De acordo com o nível escolhido um cronometro invisível será ativado delimitando tempo de cada jogada para o jogador real realizar sua jogada, se a jogada não acontecer dentro desse tempo, o jogador perderá sua vez. 
 
-- Até que o jogo seja reiniciado o placar será acumulativo.
+  - Easy = no-time
+  - Medium = 6s
+  - Hard = 3s
 
-IA
-
-- Para criar IA foi necessário entender que, se o player 1 escolhe bolinha IA é x e começa jogando, se o player 1 é x IA é bolinha e player 1 começa jogando
+- O placar é acumulativo.

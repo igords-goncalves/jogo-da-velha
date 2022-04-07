@@ -11,7 +11,7 @@ main {
 }
 
 #bg-quadro {
-    background-color: #14bdac;
+    background-color: var(--main-color);
 
     width: 50%;
     min-width: 320px;
@@ -79,14 +79,6 @@ main {
     font-size: 1.2em;
 }
 
-a {
-    text-decoration: none;
-    font-family: 'Open Sans', sans-serif;
-
-    color: #0e6191;
-    font-size: 1em;
-}
-
 /* Simbolos */
 
 .x {
@@ -122,7 +114,11 @@ a {
     font-family: 'Oswald', sans-serif;
 }
 
-#recomecar {
-    font-size: 11pt;
-    font-weight: 700;
+#recomecar a {
+    font-size: 1em;
+    font-weight: 500;
+    font-family: 'Open Sans', sans-serif;
+
+    text-decoration: none;
+    color: var(--main-color);
 }
