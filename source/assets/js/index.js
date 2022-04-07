@@ -38,6 +38,10 @@ function clicarEinserirSimboloTratado(containerDeCaixas) {
             console.log(caixa.id) //# mostre o id de quem é a caixa clicada e chame a função abaixo
             console.log('Jogada player nº ' + player) //# Jogada
             console.log('Jogada ai nº '+ ia) //# Jogada
+
+            setTimeout(() => {
+                inteligenciaArtificial(caixa, checarValorEdefinirSimbolo())
+            }, 1000)
         })
     })
     
@@ -49,8 +53,6 @@ function verificaJogadas(caixa, simbolo) { // Caixa é um elemento dentro de con
 
     if (caixa.childNodes.length === 0 && caixa.childNodes.length < 1) { 
         // Se a caixa estiver vazia sem childNodes(filhos) faça ...
-
-        inteligenciaArtificial()    
 
         caixa.appendChild(simbolo.cloneNode(true))
         //* Clonar o elemento nesse caso é ralizar cópias do mesmo elemento
@@ -146,7 +148,7 @@ function checarCondicaoDeEmpate() {
     let empate = 0
     for (let index = 0; index < containerDeCaixas.length; index++) {
         if (containerDeCaixas[index].childNodes[0] !== undefined) { // Se a caixa não estiver vazia
-            empate ++ 
+            empate ++
         }
     }
     if(empate === 9) {
@@ -223,6 +225,28 @@ function declararVencedorAtualizaPlacar(simbolo) {
 
 // Criando a IA usando recursividade
 
-function inteligenciaArtificial() {
-    // ...
+function inteligenciaArtificial(caixa, simbolo) {
+
+    let counter = 0
+    let field = 0
+
+    // Criando o jogador aleatório de acordo com o a quantidade casas para executar jogadas
+
+    for (let index = 0; 2 < containerDeCaixas.length; index++) {
+        let randomNumbers = Math.floor(Math.random() * 5)
+        
+        if (containerDeCaixas[index].childNodes[0] === undefined) {
+            if (randomNumbers <= 1) {
+                containerDeCaixas[index].appendChild( simbolo.cloneNode(true))
+                counter++;
+                break;
+            }
+        } else { // Checa quantas estão preenchidas
+            field++
+        }
+    }
+
+    if (counter === 0 && field < 9) {
+        inteligenciaArtificial()
+    }
 }
