@@ -36,7 +36,9 @@ function clicarEinserirSimboloTratado(containerDeCaixas) {
             verificaJogadas(caixa, checarValorEdefinirSimbolo()) // Higher order function
 
             console.log(caixa.id) //# mostre o id de quem é a caixa clicada e chame a função abaixo
+
             console.log('Jogada player nº ' + player) //# Jogada
+
             console.log('Jogada ai nº '+ ia) //# Jogada
 
             setTimeout(() => {
@@ -47,6 +49,7 @@ function clicarEinserirSimboloTratado(containerDeCaixas) {
     
 }
 clicarEinserirSimboloTratado(containerDeCaixas) 
+// ou seja o simbolo só será inserido depois de uma checagem
 // O tratamento acontece em verificaJogadas, checarValorEdefinirSimbolo
 
 function verificaJogadas(caixa, simbolo) { // Caixa é um elemento dentro de containerDeCaixas
@@ -63,7 +66,7 @@ function verificaJogadas(caixa, simbolo) { // Caixa é um elemento dentro de con
 
         player === ia ? player++ : ia++ // Da todo suporte para condicinal de checarValorEdefinirSimbolo()
 
-        console.log(player, ia) //# teste Mostra o valor atual entre os players antes de rceber o simbolo
+        console.log(player, ia) //# teste Mostra o valor atual entre os players antes de receber o simbolo
     }
 
     checarCondicaoDeVitoria()
@@ -227,26 +230,28 @@ function declararVencedorAtualizaPlacar(simbolo) {
 
 function inteligenciaArtificial(caixa, simbolo) {
 
-    let counter = 0
-    let field = 0
+    let contador = 0
 
     // Criando o jogador aleatório de acordo com o a quantidade casas para executar jogadas
 
-    for (let index = 0; 2 < containerDeCaixas.length; index++) {
+    for (let i = 0; 1 < containerDeCaixas.length; i++) {
+        
         let randomNumbers = Math.floor(Math.random() * 5)
         
-        if (containerDeCaixas[index].childNodes[0] === undefined) {
+        if (containerDeCaixas[i].childNodes[0] === undefined) {
             if (randomNumbers <= 1) {
-                containerDeCaixas[index].appendChild( simbolo.cloneNode(true))
-                counter++;
+                containerDeCaixas[i].appendChild( simbolo.cloneNode(true))
+                contador++;
                 break;
             }
         } else { // Checa quantas estão preenchidas
-            field++
+            caixa++
         }
     }
 
-    if (counter === 0 && field < 9) {
+    if (contador === 0 && caixa <= 9) {
         inteligenciaArtificial()
     }
 }
+
+// Lembre-se valores iguais insere x, valores diferentes insere 0
