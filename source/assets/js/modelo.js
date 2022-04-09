@@ -1,11 +1,13 @@
-const x = document.querySelector(".x")
-const o = document.querySelector(".o")
+// Variáveis úteis para o programa
 
-const containerDeCaixas = document.querySelectorAll('.box')
-const botoes = document.querySelectorAll("#botoes")
+const x = document.querySelector(".x") // Simbolo
+const o = document.querySelector(".o") // Simbolo
 
-const mensagem = document.querySelector("#mensagem")
-let textoDaMensagem = document.querySelector("#mensagem p")
+const containerDeCaixas = document.querySelectorAll('.box') // Retorna Nodelist estática[]
+const botoes = document.querySelectorAll("#botoes") // Retorna Nodelist estática[]
+
+const mensagem = document.querySelector("#mensagem") //Div que envolve o texto
+let textoDaMensagem = document.querySelector("#mensagem p") // O texto propriamente dito
 
  // Recomeca a partida
 
@@ -17,34 +19,56 @@ function recomecarPartidaDoZero() {
 recomecarPartidaDoZero()
 
 
+// Contador de jogadas --> Entender a lógica de existência dos jogadores
+// A cada jogada feita, player e ia assumirão um valor de acordo com o evento
+// Quando os valores forem iguais inserir "x", quando forem diferentes inserir "o"
+
 let player = 0
 let ia = 0
 
+// Regra de negócio ==================================================================================
 
 function clicarEinserirSimboloTratado(containerDeCaixas) {
 
-    containerDeCaixas.forEach(caixa => {
-        caixa.addEventListener('click', () => {
+    containerDeCaixas.forEach(caixa => { // Dentro do containerDeCaixas para cada caixa adicione...
+        caixa.addEventListener('click', () => { // ... e quando o evento acontecer faça coisas:
 
             setTimeout(() => {
-                inteligenciaArtificial(caixa, o)
+                inteligenciaArtificial(caixa, checarValorEdefinirSimbolo())
             }, 1000)
 
-            verificaJogadas(caixa, checarValorEdefinirSimbolo())
+            verificaJogadas(caixa, checarValorEdefinirSimbolo()) // Higher order function
+
+
+
+            console.log(caixa.id) //# mostre o id de quem é a caixa clicada e chame a função abaixo
+
+            console.log('Jogada player nº ' + player) //# Jogada
+
+            console.log('Jogada ai nº '+ ia) //# Jogada
         })
     })
     
 }
 clicarEinserirSimboloTratado(containerDeCaixas) 
+// ou seja o simbolo só será inserido depois de uma checagem
+// O tratamento acontece em verificaJogadas, checarValorEdefinirSimbolo
 
-
-function verificaJogadas(caixa, simboloChecado) {
+function verificaJogadas(caixa, simboloChecado) { // Caixa é um elemento dentro de containerDeCaixas
 
     if (caixa.childNodes.length === 0 && caixa.childNodes.length < 1) { 
+        // Se a caixa estiver vazia sem childNodes(filhos) faça ...
 
         caixa.appendChild(simboloChecado.cloneNode(true))
+        //* Clonar o elemento nesse caso é ralizar cópias do mesmo elemento
+        //* Pois se o elemento não for clonado ele somenete irá de um lugar para o outro
+        //* Inserindo o clone filho do símbolo dentro da caixa quebrando a condicional
+        //* Se o nó não for mais igual a zero ele vira falso e cai no else
+        //* Simbolo é o valor checado e definido na função checarValorEdefinirSimbolo()
 
-        player === ia ? player++ : ia++
+        player === ia ? player++ : ia++ // Da todo suporte para condicinal de checarValorEdefinirSimbolo()
+
+        console.log(player, ia) //# teste Mostra o valor atual entre os players antes de receber o simbolo
     }
 
     checarCondicaoDeVitoria()
@@ -53,13 +77,15 @@ function verificaJogadas(caixa, simboloChecado) {
 function checarValorEdefinirSimbolo() {
 
     let simboloDaVariavel = ''
+    // Vai receber uma variável que contém um simbolo com base na comparação de player e ia
 
     player === ia ? simboloDaVariavel = x : simboloDaVariavel = o
+    // Quando os valores forem iguais inserir "x", quando forem diferentes inserir "o"
 
     return simboloDaVariavel
 }
 
-function checarCondicaoDeVitoria() {
+function checarCondicaoDeVitoria() { // Só é possível checar a vitória depois de verificar as jogadas
 
     const b1 = document.querySelector('#block-1')
     const b2 = document.querySelector('#block-2')
@@ -71,18 +97,22 @@ function checarCondicaoDeVitoria() {
     const b8 = document.querySelector('#block-8')
     const b9 = document.querySelector('#block-9')
 
+    // Função pensada evitando repetições quanto a lógica de vitória
+
     function automacaoCondicaoDeVitoria(caixaOcupada1, caixaOcupada2, caixaOcupada3, simbolo) {
-        if(
+        if( // Se a caixas selecionadas não estiverem vazias ...
             caixaOcupada1.childNodes.length > 0 && 
             caixaOcupada2.childNodes.length > 0 && 
             caixaOcupada3.childNodes.length > 0
          ) {
-            if (
+            if ( // ... e se a caixa ocupada tem um filho chamado "x" ou "o" então chame a função ...
                 caixaOcupada1.childNodes[0].className === simbolo &&
                 caixaOcupada2.childNodes[0].className === simbolo &&
                 caixaOcupada3.childNodes[0].className === simbolo
                 ) {
                     declararVencedorAtualizaPlacar(simbolo)
+                    
+            //# Na func verificaJogadas deixamos claro que as caixas só podem receber 1 filho, que será o [0]
             }
         }
     }
@@ -122,7 +152,7 @@ function checarCondicaoDeVitoria() {
 function checarCondicaoDeEmpate() {
     let empate = 0
     for (let index = 0; index < containerDeCaixas.length; index++) {
-        if (containerDeCaixas[index].childNodes[0] !== undefined) {
+        if (containerDeCaixas[index].childNodes[0] !== undefined) { // Se a caixa não estiver vazia
             empate ++
         }
     }
@@ -130,6 +160,9 @@ function checarCondicaoDeEmpate() {
         declararVencedorAtualizaPlacar()
     }
 }
+
+// As funcionalidades, a parte de nível e escolha do simbolo será feita nessa parte
+
 
 function declararVencedorAtualizaPlacar(simbolo) {
     
@@ -141,7 +174,7 @@ function declararVencedorAtualizaPlacar(simbolo) {
 
     if (simbolo === 'x') {
 
-        placarX.textContent = parseInt(placarX.textContent) + 1
+        placarX.textContent = parseInt(placarX.textContent) + 1 // Valor de string para int
         
         msg = "X VENCEU"
 
@@ -168,7 +201,7 @@ function declararVencedorAtualizaPlacar(simbolo) {
     mensagem.classList.remove('esconder')
 
     function trocarBgLimparZerar() {
-        player = 0
+        player = 0 // Dessa maneira X sempre começa jogando primeiro
         ia = 0
 
         let bgQuadro = document.querySelector("#bg-quadro")
@@ -199,16 +232,19 @@ function inteligenciaArtificial(caixa, simbolo) {
 
     let contador = 0
 
+    // Criando o jogador aleatório de acordo com o a quantidade casas para executar jogadas
+
     for (let i = 0; 1 < containerDeCaixas.length; i++) {
+        
         let randomNumbers = Math.floor(Math.random() * 5)
         
         if (containerDeCaixas[i].childNodes[0] === undefined) {
             if (randomNumbers <= 1) {
-                    containerDeCaixas[i].appendChild( simbolo.cloneNode(true) )
+                containerDeCaixas[i].appendChild( simbolo.cloneNode(true))
                 contador++;
                 break;
             }
-        } else {
+        } else { // Checa quantas estão preenchidas
             caixa++
         }
     }
@@ -217,3 +253,4 @@ function inteligenciaArtificial(caixa, simbolo) {
         inteligenciaArtificial()
     }
 }
+// Lembre-se valores iguais insere x, valores diferentes insere 0
