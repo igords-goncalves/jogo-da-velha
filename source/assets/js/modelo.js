@@ -31,7 +31,7 @@ let ia = 0
 function clicarEinserirSimboloTratado(containerDeCaixas) {
 
     containerDeCaixas.forEach(caixa => { // Dentro do containerDeCaixas para cada caixa adicione...
-        caixa.addEventListener('click', () => { // ... e quando o evento acontecer faça coisas:
+        caixa.addEventListener('click', () => { // ... e quando o evento acontecer faça 2 coisas:
 
             setTimeout(() => {
                 inteligenciaArtificial(caixa, checarValorEdefinirSimbolo())
