@@ -1,0 +1,6 @@
+Refactoring:
+  ✔ Refatora HTML e CSS; @low @done(24-12-22 15:34)
+  ☐ Utilizar localstorage para salvar o placar; @low
+  ☐ Verificar possibilidade uso orientação a objetos; @low
+  ☐ Corrigir erro com inteligência artificial; @critical
+  ☐ Impedir interação com tabuleiro enquanto mensagem estiver em tela; @high
