@@ -2,5 +2,9 @@ Refactoring:
   ✔ Refatora HTML e CSS; @low @done(24-12-22 15:34)
   ☐ Utilizar localstorage para salvar o placar; @low
   ☐ Verificar possibilidade uso orientação a objetos; @low
-  ☐ Corrigir erro com inteligência artificial; @critical
+  ✔ Corrigir erro com inteligência artificial; @critical @started(24-12-22 16:17) @done(24-12-22 17:04) @lasted(47m58s)
   ☐ Impedir interação com tabuleiro enquanto mensagem estiver em tela; @high
+  ☐ Definir se o player joga com "x" ou "o" através dos botões; @low
+  ☐ Corrigir preenchimento de casas com IA.
+  ☐ Após a mensagem de vitória colocar dois botões de continuar / recomeçar.
+  ✔ Separar funções em módulos @critical @started(24-12-23 12:30) @file:///C:/Users/igord/Code/jogo-da-velha/source/assets/js @done(24-12-23 13:34) @lasted(1h4m49s)
