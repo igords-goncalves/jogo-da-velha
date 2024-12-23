@@ -22,7 +22,7 @@ header {
   display: flex;
   flex-direction: column;
   width: 100%;
-  align-items: start;
+  align-items: center;
   gap: 10px;
 }
 
@@ -48,11 +48,12 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 10px;
     
     .botao {
       text-align: center;
       padding: 10px 10px;
-      width: 100px;
+      width: 100%;
 
       font-size: 1.5em;
 
@@ -102,7 +103,8 @@ select {
 	background: none;
 	padding: 5px;
 	border-radius: 4px;
-    width: 100px;
+  width: 100%;
+  text-align: center;
 }
 
 .select-wrapper {
