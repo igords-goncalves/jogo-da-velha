@@ -1,81 +1,84 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="#">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/variables.css">
-    <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="shortcut icon" href="#" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/variables.css" />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/reset.css" />
 
-    <script src="https://kit.fontawesome.com/7b1140090f.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/7b1140090f.js"
+      crossorigin="anonymous"
+    ></script>
 
     <title>Jogo da Velha</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <div id="titulo" class="container">
-            <h1>Jogo da Velha</h1>
+      <div id="titulo" class="container">
+        <h1>Jogo da Velha</h1>
+      </div>
+      <div id="painel" class="container">
+        <div>
+          <select name="nivel" id="nivel">
+            <option value="facil" selected>Fácil</option>
+            <option value="medio">Médio</option>
+            <option value="dificil">Difícil</option>
+          </select>
         </div>
-        <div id="painel" class="container">
-            <div>
-                <select name="nivel" id="nivel">
-                    <option value="facil" selected>Fácil</option>
-                    <option value="medio">Médio</option>
-                    <option value="dificil">Difícil</option>
-                </select>
-            </div>
-            <div id="botoes">
-                <button id="vezes" class="botao"><i class="fas fa-times"></i></button>
-                <button id="bolinha" class="botao"><i class="fas fa-circle"></i></button>
-            </div>
+        <div id="botoes">
+          <button id="vezes" class="botao"><i class="fas fa-times"></i></button>
+          <button id="bolinha" class="botao">
+            <i class="fas fa-circle"></i>
+          </button>
         </div>
+      </div>
     </header>
 
     <main>
-        <div id="bg-quadro">
-            <div id="quadro" class="container">
-                <div class="box" id="block-1"></div>
-                <div class="box" id="block-2"></div>
-                <div class="box" id="block-3"></div>
-                <div class="box" id="block-4"></div>
-                <div class="box" id="block-5"></div>
-                <div class="box" id="block-6"></div>
-                <div class="box" id="block-7"></div>
-                <div class="box" id="block-8"></div>
-                <div class="box" id="block-9"></div>
-            </div>
+      <div id="bg-quadro">
+        <div id="quadro" class="container">
+          <div class="box" id="block-1"></div>
+          <div class="box" id="block-2"></div>
+          <div class="box" id="block-3"></div>
+          <div class="box" id="block-4"></div>
+          <div class="box" id="block-5"></div>
+          <div class="box" id="block-6"></div>
+          <div class="box" id="block-7"></div>
+          <div class="box" id="block-8"></div>
+          <div class="box" id="block-9"></div>
         </div>
+      </div>
 
-        <div id="placar" class="container">
-            <span class="placar">
-                <span id="x-placar"><i class="fas fa-times"></i></span>
-                <span id="placar-1">0</span>
-            </span>
-            <span class="placar">
-                <span id="o-placar"><i class="fas fa-circle"></i></span>
-                <span id="placar-2">0</span>
-            </span>
-        </div>
-        
-        <div id="recomecar">
-            <a href="#">Recomece o Jogo</a>
-        </div>
+      <div id="placar" class="container">
+        <span class="placar">
+          <span id="x-placar"><i class="fas fa-times"></i></span>
+          <span id="placar-1">0</span>
+        </span>
+        <span class="placar">
+          <span id="o-placar"><i class="fas fa-circle"></i></span>
+          <span id="placar-2">0</span>
+        </span>
+      </div>
+
+      <div id="recomecar">
+        <a href="#">Recomece o Jogo</a>
+      </div>
     </main>
 
-    <div class="esconder"> 
-        <div class="x"><i class="fas fa-times"></i></div>
-        <div class="o"><i class="fas fa-circle"></i></div>
+    <div class="esconder">
+      <div class="x"><i class="fas fa-times"></i></div>
+      <div class="o"><i class="fas fa-circle"></i></div>
     </div>
 
-    <div id="mensagem" class="esconder">
-        <p></p>
-    </div>
+    <div id="mensagem" class="esconder"></div>
 
     <script type="module" src="./assets/js/index.js"></script>
-</body>
+  </body>
 </html>
