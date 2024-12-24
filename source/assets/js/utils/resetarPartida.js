@@ -1,7 +1,7 @@
-function recomecarPartidaDoZero() {
+function resetarPartida() {
   document.querySelector("#recomecar").addEventListener("click", function () {
     location.reload();
   });
 }
 
-export default recomecarPartidaDoZero;
+export default resetarPartida;

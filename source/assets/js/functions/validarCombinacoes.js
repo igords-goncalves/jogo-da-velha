@@ -1,7 +1,7 @@
-import automacaoCondicaoDeVitoria from "./automacaoCondicaoVitoria.js";
+import validarVitoria from "./validarVitoria.js";
 
-// Copilot generate
-function checarCondicaoDeVitoria() {
+//~~> Copilot generate
+function validarCombinacoes() {
   const blocos = Array.from({ length: 9 }, (_, i) =>
     document.querySelector(`#block-${i + 1}`)
   );
@@ -17,16 +17,17 @@ function checarCondicaoDeVitoria() {
     [2, 4, 6],
   ];
 
-  ["x", "o"].forEach((player) => {
+  ["x", "o"].forEach((simbolo) => {
     combinacaoDeVitorias.forEach((combincacao) => {
-      automacaoCondicaoDeVitoria(
+      const vencedor = validarVitoria(
         blocos[combincacao[0]],
         blocos[combincacao[1]],
         blocos[combincacao[2]],
-        player
+        simbolo
       );
+      return vencedor;
     });
   });
 }
 
-export default checarCondicaoDeVitoria;
+export default validarCombinacoes;

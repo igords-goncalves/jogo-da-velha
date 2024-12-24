@@ -1,6 +1,6 @@
 import limparJogadas from "./limparJogadas.js";
 
-function trocarBgLimparZerar(mensagem) {
+function continuarPartida(mensagem) {
   const quadro = document.querySelector("#bg-quadro");
 
   quadro.style.filter = "blur(10px)";
@@ -13,4 +13,4 @@ function trocarBgLimparZerar(mensagem) {
   }, 1500);
 }
 
-export default trocarBgLimparZerar;
+export default continuarPartida;
