@@ -1,5 +1,5 @@
-import clicarEinserirSimboloTratado from "./utils/clicarEinserirSimboloTratado.js";
-import recomecarPartidaDoZero from "./utils/recomecarPartidaDoZero.js";
+import inserirSimbolo from "./functions/inserirSimbolo.js";
+import resetarPartida from "./utils/resetarPartida.js";
 
-recomecarPartidaDoZero();
-clicarEinserirSimboloTratado();
+resetarPartida();
+inserirSimbolo();

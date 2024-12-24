@@ -1,23 +1,22 @@
-import automacaoCondicaoDeVitoria from "./automacaoCondicaoVitoria.js";
-
-function inteligenciaArtificial(caixa, simbolo, containerDeCaixas) {
+function inteligenciaArtificial(bloco, simbolo, blocos) {
   let contador = 0;
+  let randomNumbers = Math.floor(Math.random() * 5 + 1);  
 
-  //FIXME: O problema está no preenchimento das casas com IA.
-  for (let i = 0; i < containerDeCaixas.length; i++) {
-    let randomNumbers = Math.floor(Math.random() * 2);
+  for (let i = 0; i < blocos.length; i++) {
 
-    if (containerDeCaixas[i].childNodes[0] === undefined && randomNumbers < 1) {
-      containerDeCaixas[i].appendChild(simbolo.cloneNode(true));
+    console.log(randomNumbers)
+
+    if (blocos[i].childNodes[0] === undefined  && randomNumbers !== 0) {
+      blocos[i].appendChild(simbolo.cloneNode(true));
       contador++;
       break;
     } else {
-      caixa++;
+      bloco++;
     }
   }
 
-  if (contador === 0 && caixa < 9) {
-    inteligenciaArtificial();
+  if (contador !== 0 && bloco <= 9 ) {
+    inteligenciaArtificial(bloco, simbolo, blocos);
   }
 }
 
