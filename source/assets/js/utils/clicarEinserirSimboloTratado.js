@@ -2,7 +2,14 @@ import checarValorEdefinirSimbolo from "../functions/checarValorEdefinirSimbolo.
 import inteligenciaArtificial from "../functions/inteligenciaArtificial.js";
 import verificaJogadas from "./verificaJogadas.js";
 
-function clicarEinserirSimboloTratado(containerDeCaixas, x, o, player, ia) {
+function clicarEinserirSimboloTratado() {
+  const containerDeCaixas = document.querySelectorAll(".box");
+
+  const x = document.querySelector(".x");
+  const o = document.querySelector(".o");
+  let player = 0;
+  let ia = 0;
+
   containerDeCaixas.forEach((caixa) => {
     caixa.addEventListener("click", () => {
       setTimeout(() => {
