@@ -1,3 +1,5 @@
+import automacaoCondicaoDeVitoria from "./automacaoCondicaoVitoria.js";
+
 function inteligenciaArtificial(caixa, simbolo, containerDeCaixas) {
   let contador = 0;
 
