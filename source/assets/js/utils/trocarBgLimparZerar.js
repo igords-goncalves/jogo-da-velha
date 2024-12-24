@@ -1,26 +1,16 @@
+import limparJogadas from "./limparJogadas.js";
+
 function trocarBgLimparZerar(mensagem) {
-  let bgQuadro = document.querySelector("#bg-quadro");
-  bgQuadro.style.filter = "blur(10px)";
-  bgQuadro.style.transition = "0.3s";
+  const quadro = document.querySelector("#bg-quadro");
 
-  const esconderBg = (elemento) =>
-    bgQuadro.style.removeProperty(elemento);
+  quadro.style.filter = "blur(10px)";
+  quadro.style.transition = "0.3s";
 
-  const esconderMsg = (elemento) => elemento.classList.add("esconder");
-
-  const limpar = () => {
-    const removerJogadas = document.querySelectorAll(".box div");
-
-    for (let i = 0; i < removerJogadas.length; i++) {
-      removerJogadas[i].parentNode.removeChild(removerJogadas[i]);
-    }
-
-    setTimeout(() => {
-      esconderMsg(mensagem);
-      esconderBg(bgQuadro, "filter");
-      limpar();
-    }, 1500);
-  };
+  setTimeout(() => {
+    quadro.style.removeProperty("filter");
+    mensagem.classList.add("esconder");
+    limparJogadas();
+  }, 1500);
 }
 
 export default trocarBgLimparZerar;
