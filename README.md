@@ -2,6 +2,8 @@
 
 Este projeto implementa o clássico jogo da velha (tic-tac-toe) utilizando HTML, CSS e JavaScript.
 
+![image](https://github.com/user-attachments/assets/c3ab6bdc-9593-467d-bd86-dc2ee4670d28)
+
 ## Estrutura do Projeto:
 
 ```bash
