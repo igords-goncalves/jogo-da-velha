@@ -3,16 +3,18 @@ Refactoring:
   ✔ Corrigir erro com inteligência artificial; @critical @started(24-12-22 16:17) @done(24-12-22 17:04) @lasted(47m58s)
   ✔ Separar funções em módulos; @critical @started(24-12-23 12:30) @done(24-12-23 13:34) @lasted(1h4m49s)
   ☐ Corrigir problema com preenchimento das casas, após vitória ou empate, novas jogadas não podem ser realizadas; @critical @wasted(1h13m40s) @wasted(1h25m40s)
-  ☐ Corrigir problema com marcação de empate; @critical
-  ☐ Corrigir preenchimento de casas com IA; @critical
+  ✔ Corrigir problema com marcação de empate; @critical @done(24-12-26 21:26)
+  ☐ Corrigir preenchimento aleatório de casas com IA; @critical
   ✔ Corrigir problema com mensagem de erro ou adapatar ao novo design; @low @started(24-12-24 10:15) @done(24-12-24 10:52) @lasted(37m16s)
   ☐ Utilizar localstorage para salvar o placar; @low
   ☐ Verificar possibilidade uso orientação a objetos; @low
+  ☐ Ajudar estilo de exibição da mensagem de vitória; @low
   
   Ações de design e estilo:
-    ☐ Após a mensagem de vitória colocar dois botões de continuar / recomeçar;
-    ☐ Não exibir mensagens e deixar apenas incremento do placar, recomeçando o jogo a cada vitória ou empate;
+    ☐ Após a mensagem de vitória colocar dois botões de continuar / recomeçar; @opcional @low
+    ☐ Não exibir mensagens e deixar apenas incremento do placar, recomeçando o jogo a cada vitória ou empate; @opcional @low
     ☐ Definir se o player joga com "x" ou "o" através dos botões; @low
   
   HTML e CSS:
     ☐ Refatorar todos os elementos utilizando arquitetura BEM; @low @1d
+    ☐ Corrigir estilo aplicado para mensagem; @low

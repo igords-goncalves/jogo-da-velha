@@ -104,8 +104,6 @@ main {
 
 #mensagem {
   position: absolute;
-  top: 50%;
-  left: 25%;
 
   font-size: 3em;
   color: var(--main-bg-color);

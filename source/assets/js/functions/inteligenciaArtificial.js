@@ -1,21 +1,17 @@
 function inteligenciaArtificial(bloco, simbolo, blocos) {
   let contador = 0;
-  let randomNumbers = Math.floor(Math.random() * 5 + 1);  
 
   for (let i = 0; i < blocos.length; i++) {
+    let randomNumbers = Math.floor(Math.random() * 6);
 
-    console.log(randomNumbers)
-
-    if (blocos[i].childNodes[0] === undefined  && randomNumbers !== 0) {
+    if (!blocos[i]?.childNodes.length && randomNumbers <= 1) {
       blocos[i].appendChild(simbolo.cloneNode(true));
       contador++;
       break;
-    } else {
-      bloco++;
     }
   }
 
-  if (contador !== 0 && bloco <= 9 ) {
+  if (contador === 0 && bloco < blocos.length) {
     inteligenciaArtificial(bloco, simbolo, blocos);
   }
 }
