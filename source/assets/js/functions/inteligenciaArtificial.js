@@ -1,18 +1,16 @@
 function inteligenciaArtificial(bloco, simbolo, blocos) {
-  let contador = 0;
-
+  const blocosVazios = [];
+  
   for (let i = 0; i < blocos.length; i++) {
-    let randomNumbers = Math.floor(Math.random() * 6);
-
-    if (!blocos[i]?.childNodes.length && randomNumbers <= 1) {
-      blocos[i].appendChild(simbolo.cloneNode(true));
-      contador++;
-      break;
+    if (!blocos[i]?.childNodes.length) {
+      blocosVazios.push(i);
     }
   }
-
-  if (contador === 0 && bloco < blocos.length) {
-    inteligenciaArtificial(bloco, simbolo, blocos);
+  
+  if (blocosVazios.length > 0) {
+    const indiceAleatorio = Math.floor(Math.random() * blocosVazios.length);
+    const blocoEscolhido = blocosVazios[indiceAleatorio];
+    blocos[blocoEscolhido].appendChild(simbolo.cloneNode(true));
   }
 }
 
