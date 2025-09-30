@@ -27,14 +27,14 @@ Como Executar o Projeto:
 
 Clone o repositório para o seu ambiente local:
 
-bash
-```
+
+```bash
 git clone https://github.com/igords-goncalves/jogo-da-velha.git
 ```
 
 Navegue até o diretório do projeto:
 
-```
+```bash
 cd jogo-da-velha
 ```
 
