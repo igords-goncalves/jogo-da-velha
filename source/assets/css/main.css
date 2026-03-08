@@ -105,6 +105,13 @@ main {
 #mensagem {
   position: absolute;
 
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   font-size: 3em;
   color: var(--main-bg-color);
   font-family: "Oswald", sans-serif;

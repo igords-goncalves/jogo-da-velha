@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap");
+@import "https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap";
 
 body {
   width: 100%;
@@ -28,7 +28,7 @@ header {
 
 #titulo {
   font-size: 1.1em;
-  font-family: "Oswald", sans-serif;
+  font-family: Oswald, sans-serif;
 }
 
 #painel {
@@ -62,9 +62,13 @@ header {
       border: 1px solid #6e6e6e;
       border-radius: 6px;
 
-      &:hover {
+      &:hover, &.active {
         border-bottom: 1px solid var(--main-color);
         transition: 0.1s;
+      }
+      
+      &.active {
+        border: 1px solid var(--main-color);
       }
     }
 

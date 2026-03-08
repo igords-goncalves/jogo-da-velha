@@ -1,6 +1,5 @@
 import validarVitoria from "./validarVitoria.js";
 
-//~~> Copilot generate
 function validarCombinacoes() {
   const blocos = Array.from({ length: 9 }, (_, i) =>
     document.querySelector(`#block-${i + 1}`)
@@ -17,17 +16,17 @@ function validarCombinacoes() {
     [2, 4, 6],
   ];
 
-  ["x", "o"].forEach((simbolo) =>
-    combinacaoDeVitorias.forEach(
-      (combincacao) =>
-        (validarVitoria(
-          blocos[combincacao[0]],
-          blocos[combincacao[1]],
-          blocos[combincacao[2]],
-          simbolo
-        ))
+  const vitoria = ["x", "o"].some((simbolo) =>
+    combinacaoDeVitorias.some((combinacao) =>
+      validarVitoria(
+        blocos[combinacao[0]],
+        blocos[combinacao[1]],
+        blocos[combinacao[2]],
+        simbolo
+      )
     )
   );
+  return vitoria;
 }
 
 export default validarCombinacoes;
