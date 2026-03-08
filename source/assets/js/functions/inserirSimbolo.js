@@ -1,4 +1,4 @@
-import validarSimbolo from "./validarSimbolo.js";
+import { gameState } from "../store/gameState.js";
 import inteligenciaArtificial from "./inteligenciaArtificial.js";
 import validarCombinacoes from "./validarCombinacoes.js";
 import validarEmpate from "./validarEmpate.js";
@@ -10,21 +10,24 @@ function inserirSimbolo() {
 
   blocos.forEach((bloco) => {
     bloco.addEventListener("click", () => {
+      const mensagem = document.querySelector("#mensagem");
+      if (!mensagem.classList.contains("esconder")) return;
       if (bloco.childNodes.length > 0) return;
-      /**
-       * //FIXME:
-       * A tarefa agendada na queue deve ser interrompida
-       * assim que o vencedor é declarado, sendo assim a ia não
-       * deve inserir peças após a derrota.
-      **/
-      const simboloValidado = validarSimbolo(x, o);
-      bloco.appendChild(simboloValidado.cloneNode(true));
 
-      validarEmpate(blocos);
-      validarCombinacoes();
+      const simboloAtual = gameState.playerSymbol === "x" ? x : o;
+      const simboloIA = gameState.aiSymbol === "x" ? x : o;
+
+      bloco.appendChild(simboloAtual.cloneNode(true));
+
+      const vitoria = validarCombinacoes();
+      if (!vitoria) {
+        validarEmpate(blocos);
+      }
       
+      if (!mensagem.classList.contains("esconder")) return;
+
       setTimeout(() => {
-        inteligenciaArtificial(bloco, o, blocos);
+        inteligenciaArtificial(bloco, simboloIA, blocos);
       }, 200);
     });
   });

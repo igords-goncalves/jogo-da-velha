@@ -2,11 +2,11 @@ Refactoring:
   ✔ Refatora HTML e CSS; @low @done(24-12-22 15:34)
   ✔ Corrigir erro com inteligência artificial; @critical @started(24-12-22 16:17) @done(24-12-22 17:04) @lasted(47m58s)
   ✔ Separar funções em módulos; @critical @started(24-12-23 12:30) @done(24-12-23 13:34) @lasted(1h4m49s)
-  ☐ Corrigir problema com preenchimento das casas, após vitória ou empate, novas jogadas não podem ser realizadas; @critical @wasted(1h13m40s) @wasted(1h25m40s)
+  ✔ Corrigir problema com preenchimento das casas, após vitória ou empate, novas jogadas não podem ser realizadas; @critical @wasted(1h13m40s) @wasted(1h25m40s) @done(26-03-08)
   ✔ Corrigir problema com marcação de empate; @critical @done(24-12-26 21:26)
-  ☐ Corrigir preenchimento aleatório de casas com IA; @critical
+  ✔ Corrigir preenchimento aleatório de casas com IA; @critical @done(26-03-08)
   ✔ Corrigir problema com mensagem de erro ou adapatar ao novo design; @low @started(24-12-24 10:15) @done(24-12-24 10:52) @lasted(37m16s)
-  ☐ Utilizar localstorage para salvar o placar; @low
+  ✔ Utilizar localstorage para salvar o placar; @low @done(26-03-08)
   ☐ Verificar possibilidade uso orientação a objetos; @low
   ☐ Ajudar estilo de exibição da mensagem de vitória; @low
   

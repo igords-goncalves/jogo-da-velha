@@ -62,9 +62,13 @@ header {
       border: 1px solid #6e6e6e;
       border-radius: 6px;
 
-      &:hover {
+      &:hover, &.active {
         border-bottom: 1px solid var(--main-color);
         transition: 0.1s;
+      }
+      
+      &.active {
+        border: 1px solid var(--main-color);
       }
     }
 

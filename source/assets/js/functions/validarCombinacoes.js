@@ -17,17 +17,17 @@ function validarCombinacoes() {
     [2, 4, 6],
   ];
 
-  ["x", "o"].forEach((simbolo) =>
-    combinacaoDeVitorias.forEach(
-      (combincacao) =>
-        (validarVitoria(
-          blocos[combincacao[0]],
-          blocos[combincacao[1]],
-          blocos[combincacao[2]],
-          simbolo
-        ))
+  const vitoria = ["x", "o"].some((simbolo) =>
+    combinacaoDeVitorias.some((combincacao) =>
+      validarVitoria(
+        blocos[combincacao[0]],
+        blocos[combincacao[1]],
+        blocos[combincacao[2]],
+        simbolo
+      )
     )
   );
+  return vitoria;
 }
 
 export default validarCombinacoes;

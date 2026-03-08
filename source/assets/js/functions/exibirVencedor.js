@@ -9,9 +9,11 @@ function exibirVencedor(simbolo) {
 
   if (simbolo === "x") {
     placarX.textContent = parseInt(placarX.textContent) + 1;
+    localStorage.setItem("placarX", placarX.textContent);
     status = `${simbolo.toUpperCase()} VENCEU`;
   } else if (simbolo === "o") {
     placarO.textContent = parseInt(placarO.textContent) + 1;
+    localStorage.setItem("placarO", placarO.textContent);
     status = `${simbolo.toUpperCase()} VENCEU`;
   } else {
     status = "EMPATE";
