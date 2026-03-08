@@ -7,11 +7,22 @@ function gerenciarBotoes() {
   const btnO = document.querySelector("#bolinha");
   const x = document.querySelector(".x");
   const blocos = document.querySelectorAll(".box");
+  let aiStartTimeoutId = null;
 
   // Initial UI state
   btnX.classList.add("active");
 
   function resetGame() {
+    if (aiStartTimeoutId !== null) {
+      clearTimeout(aiStartTimeoutId);
+      aiStartTimeoutId = null;
+    }
+    if (gameState.aiTimeoutId !== null) {
+      clearTimeout(gameState.aiTimeoutId);
+      gameState.aiTimeoutId = null;
+    }
+    gameState.aiThinking = false;
+
     limparJogadas();
     document.querySelector("#mensagem").classList.add("esconder");
     const quadro = document.querySelector("#bg-quadro");
@@ -20,8 +31,11 @@ function gerenciarBotoes() {
 
   function checkAIStart() {
     if (gameState.aiSymbol === "x") {
-      setTimeout(() => {
+      gameState.aiThinking = true;
+      aiStartTimeoutId = setTimeout(() => {
         inteligenciaArtificial(null, x, blocos);
+        aiStartTimeoutId = null;
+        gameState.aiThinking = false;
       }, 500);
     }
   }

@@ -5,14 +5,19 @@ function exibirVencedor(simbolo) {
   let placarX = document.querySelector("span #placar-1");
   let placarO = document.querySelector("span #placar-2");
 
+  if (!mensagem || !placarX || !placarO) {
+    console.error("Elementos de placar ou mensagem não encontrados");
+    return;
+  }
+
   let status = "";
 
   if (simbolo === "x") {
-    placarX.textContent = parseInt(placarX.textContent) + 1;
+    placarX.textContent = parseInt(placarX.textContent, 10) + 1;
     localStorage.setItem("placarX", placarX.textContent);
     status = `${simbolo.toUpperCase()} VENCEU`;
   } else if (simbolo === "o") {
-    placarO.textContent = parseInt(placarO.textContent) + 1;
+    placarO.textContent = parseInt(placarO.textContent, 10) + 1;
     localStorage.setItem("placarO", placarO.textContent);
     status = `${simbolo.toUpperCase()} VENCEU`;
   } else {

@@ -13,6 +13,7 @@ function inserirSimbolo() {
       const mensagem = document.querySelector("#mensagem");
       if (!mensagem.classList.contains("esconder")) return;
       if (bloco.childNodes.length > 0) return;
+      if (gameState.aiThinking) return;
 
       const simboloAtual = gameState.playerSymbol === "x" ? x : o;
       const simboloIA = gameState.aiSymbol === "x" ? x : o;
@@ -26,8 +27,11 @@ function inserirSimbolo() {
       
       if (!mensagem.classList.contains("esconder")) return;
 
-      setTimeout(() => {
+      gameState.aiThinking = true;
+      gameState.aiTimeoutId = setTimeout(() => {
         inteligenciaArtificial(bloco, simboloIA, blocos);
+        gameState.aiThinking = false;
+        gameState.aiTimeoutId = null;
       }, 200);
     });
   });

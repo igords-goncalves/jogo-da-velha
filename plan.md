@@ -48,7 +48,7 @@ Implement logic for "Médio" and "Difícil" difficulty levels, affecting how the
 -   AI symbol is retrieved from `gameState.aiSymbol`.
 
 ## Todos
--   [ ] Update `gameState.js`.
--   [ ] Create `gerenciarDificuldade.js`.
--   [ ] Refactor `inteligenciaArtificial.js` to include Minimax and Medium logic.
--   [ ] Update `index.js`.
+-   [x] Update `gameState.js`.
+-   [x] Create `gerenciarDificuldade.js`.
+-   [x] Refactor `inteligenciaArtificial.js` to include Minimax and Medium logic.
+-   [x] Update `index.js`.

@@ -7,7 +7,7 @@ Refactoring:
   ✔ Corrigir preenchimento aleatório de casas com IA; @critical @done(26-03-08)
   ✔ Corrigir problema com mensagem de erro ou adapatar ao novo design; @low @started(24-12-24 10:15) @done(24-12-24 10:52) @lasted(37m16s)
   ✔ Utilizar localstorage para salvar o placar; @low @done(26-03-08)
-  ☐ Verificar possibilidade uso orientação a objetos; @low
+  ✘ Verificar possibilidade uso orientação a objetos; @low @cancelled(26-03-08 17:18)
   ☐ Ajudar estilo de exibição da mensagem de vitória; @low
   
   Ações de design e estilo:
