@@ -1,0 +1,53 @@
+name: Cleanup PR Preview
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if gh-pages exists
+        id: check-branch
+        run: |
+          if git ls-remote --exit-code --heads https://github.com/${{ github.repository }}.git gh-pages; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "gh-pages branch does not exist, skipping cleanup"
+          fi
+
+      - name: Checkout gh-pages branch
+        if: steps.check-branch.outputs.exists == 'true'
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          ref: gh-pages
+
+      - name: Remove preview folder
+        if: steps.check-branch.outputs.exists == 'true'
+        run: |
+          PREVIEW_DIR="previews/pr-${{ github.event.number }}"
+          if [ -d "$PREVIEW_DIR" ]; then
+            rm -rf "$PREVIEW_DIR"
+            echo "Removed $PREVIEW_DIR"
+          else
+            echo "Preview directory $PREVIEW_DIR does not exist, skipping"
+          fi
+
+      - name: Commit and push cleanup
+        if: steps.check-branch.outputs.exists == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: remove preview for PR #${{ github.event.number }}"
+            git push
+          fi

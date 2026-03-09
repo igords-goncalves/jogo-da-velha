@@ -69,6 +69,26 @@ Regras:
 - O placar é acumulativo.
 ___
 
+## Deploy (GitHub Pages)
+
+O projeto utiliza **GitHub Actions** para deploy automático no **GitHub Pages**.
+
+### URLs
+- **Produção:** `https://igords-goncalves.github.io/jogo-da-velha/`
+- **Preview (homologação):** `https://igords-goncalves.github.io/jogo-da-velha/previews/pr-<numero>/`
+
+### Fluxo
+1. **Push no `main`** → Deploy automático para produção.
+2. **Abrir Pull Request** → Preview publicado automaticamente com link no PR.
+3. **Fechar PR** → Preview removido automaticamente.
+
+### Configuração inicial (única vez)
+Em **Settings → Pages** do repositório:
+- Source: **Deploy from a branch**
+- Branch: **`gh-pages`** / **`/ (root)`**
+
+___
+
 ## Contribuições:
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests com melhorias, correções de bugs ou novas funcionalidades, visto que o projeto ainda não está finalizado.
