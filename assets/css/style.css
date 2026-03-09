@@ -1,0 +1,118 @@
+@import "https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap";
+
+body {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+
+  height: 100vh;
+  background-color: var(--main-bg-color);
+  color: var(--font-color);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+
+  font-family: "Open Sans", sans-serif;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+}
+
+#titulo {
+  font-size: 1.1em;
+  font-family: Oswald, sans-serif;
+}
+
+#painel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+
+  #nivel {
+    border: solid 1px #6e6e6e;
+    padding: 10px;
+    outline: none;
+    background: var(--main-bg-color);
+    color: var(--font-color);
+  }
+
+  #botoes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    
+    .botao {
+      text-align: center;
+      padding: 10px;
+      width: 100%;
+
+      font-size: 1.5em;
+
+      background: none;
+      border: 1px solid #6e6e6e;
+      border-radius: 6px;
+
+      &:hover, &.active {
+        border-bottom: 1px solid var(--main-color);
+        transition: 0.1s;
+      }
+      
+      &.active {
+        border: 1px solid var(--main-color);
+      }
+    }
+
+    .botao i {
+      color: var(--font-color);
+    }
+  }
+
+  #instrucoes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7em;
+  }
+  #obs {
+    color: var(--font-color);
+    font-size: 1.6em;
+    margin: 0 5px 0 5px;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
+
+@media (max-width: 800px) {
+    body {
+        padding: 0 16px;
+    }
+}
+
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+
+	/* Estilização para identificar o espaço do dropdown */
+	background: none;
+	padding: 5px;
+	border-radius: 4px;
+  width: 100%;
+  text-align: center;
+}
+
+.select-wrapper {
+	position: relative;
+	display: inline-block;
+}
