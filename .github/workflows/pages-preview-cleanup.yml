@@ -9,14 +9,20 @@ permissions:
 
 jobs:
   cleanup:
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout gh-pages branch
+      - name: Checkout default branch
         uses: actions/checkout@v4
-        with:
-          ref: gh-pages
+
+      - name: Checkout gh-pages branch (if exists)
+        id: checkout-gh-pages
+        run: |
+          git fetch origin gh-pages || { echo "gh-pages branch does not exist"; exit 0; }
+          git checkout gh-pages
 
       - name: Remove preview folder
+        if: steps.checkout-gh-pages.outcome == 'success'
         run: |
           PREVIEW_DIR="previews/pr-${{ github.event.number }}"
           if [ -d "$PREVIEW_DIR" ]; then
@@ -27,6 +33,7 @@ jobs:
           fi
 
       - name: Commit and push cleanup
+        if: steps.checkout-gh-pages.outcome == 'success'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
